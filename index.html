@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Hema Gupta | CyberRoot-Dev · Student Developer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0f;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      color: #ededf2;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111116;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 12px;
+    }
+
+    .glass-card {
+      background: rgba(15, 15, 25, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(79, 70, 229, 0.25);
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 25px 35px -12px rgba(79, 70, 229, 0.2);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa, #3b82f6, #06b6d4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 55%;
+      height: 3px;
+      background: linear-gradient(90deg, #4f46e5, #a855f7);
+      border-radius: 3px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(105deg, #4f46e5, #9333ea);
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -6px rgba(79, 70, 229, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #8b5cf6;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2.5rem;
+      font-weight: 500;
+      color: #e0e7ff;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: #c084fc;
+      color: white;
+    }
+
+    /* hero layout with image and github username above */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .hero-content {
+      flex: 1.4;
+    }
+    .hero-badge {
+      background: rgba(79, 70, 229, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 0.5px solid rgba(139, 92, 246, 0.5);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-tagline {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #c4b5fd;
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #b9c3e6;
+      max-width: 90%;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-image-side {
+      flex: 0.7;
+      min-width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .github-username {
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e0e7ff, #c084fc, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+      border-bottom: 2px dashed rgba(139, 92, 246, 0.6);
+      padding-bottom: 4px;
+      display: inline-block;
+  position: relative;
+  position: relative;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  width: auto;
+
+    }
+
+    
+    .profile-img {
+      width: 100%;
+      max-width: 260px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-top:50px;
+      border-radius: 50%;
+      border: 3px solid rgba(139, 92, 246, 0.8);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(79, 70, 229, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      background: #1e1b3a;
+    }
+    .profile-img:hover {
+      transform: scale(1.02);
+      border-color: #c084fc;
+      box-shadow: 0 25px 40px -12px #4f46e580;
+    }
+
+    /* skills grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .skill-tag {
+      background: rgba(30, 30, 50, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.3rem;
+      border-radius: 60px;
+      font-weight: 500;
+      border: 0.5px solid #4f46e5;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .skill-tag:hover {
+      background: #2d2a5e;
+      border-color: #a78bfa;
+      transform: scale(1.02);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background: rgba(12, 12, 20, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      color: #e2e8ff;
+    }
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      margin: 1rem 0;
+      background: #13111f;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      transition: 0.2s;
+    }
+    .project-img:hover {
+      border-color: #a78bfa;
+      transform: scale(1.01);
+    }
+    .project-card p {
+      color: #b9c3e6;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .agent-credit {
+      font-size: 0.75rem;
+      color: #9aa4d9;
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  
+
+    /* timeline journey */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 1.5rem;
+    }
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(to bottom, #4f46e5, #a855f7);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.2rem;
+      padding-left: 1.8rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -1.2rem;
+      top: 0.2rem;
+      width: 14px;
+      height: 14px;
+      background: #8b5cf6;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.3);
+    }
+    .timeline-year {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #a78bfa;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-text {
+      font-size: 1rem;
+      color: #ccd6f6;
+    }
+
+    /* contact + socials */
+   / .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(79, 70, 229, 0.2);
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      margin-top: 1rem;
+      font-size: 1rem;
+      backdrop-filter: blur(8px);
+      word-break: break-all;
+      text-decoration:none;
+      color:inherit;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      justify-content:center;
+      
+    }
+    .social-icon {
+      background: #18182a;
+      padding: 0.7rem;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      border: 1px solid #4f46e580;
+    }
+    .social-icon:hover {
+      transform: translateY(-4px);
+      background: #2d2a5e;
+      border-color: #a78bfa;
+    }
+    .social-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: white;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 2rem;
+      border-top: 1px solid rgba(79, 70, 229, 0.3);
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #9ca3cf;
+    }
+    .img-note {
+      font-size: 0.7rem;
+      color: #8b96c0;
+      text-align: center;
+      margin-top: 0.3rem;
+    }
+    @media (max-width: 780px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .hero-desc {
+        max-width: 100%;
+      }
+      .hero {
+        flex-direction: column-reverse;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .contact-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    section {
+      animation: fadeUp 0.6s ease-out;
+    }
+    .glow-text {
+      text-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">✦ beginner developer · JEE aspirant</div>
+      <h1>Hema <span class="gradient-text">Kumari</span></h1>
+      <div class="hero-tagline">Student Developer Building Educational Web Experiences</div>
+      <p class="hero-desc">Learning web development and creating useful tools for students. Class 12 graduate student passionate about technology, AI-powered educational tools, and modern web design. Building with curiosity and clean code.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn-primary">📁 View Projects</a>
+        <a href="#contact" class="btn-outline">✉️ Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <div class="github-username">
+        <span>⚡ CyberRoot-Dev</span>
+      </div>
+      <img src="image.png" 
+           alt="Hema Kumari profile" 
+           class="profile-img"
+           id="profileImage"
+           onerror="this.onerror=null;">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" style="margin: 4rem 0;">
+    <h2>About me</h2>
+    <div class="glass-card" style="padding: 2rem;">
+      <p style="font-size: 1.05rem; margin-bottom: 1rem;">👩‍🎓 I'm Hema, a <strong>Class 12 graduate student</strong> balancing JEE preparation with my passion for web development. I started coding to build practical tools that help students like me study smarter.</p>
+      <p style="font-size: 1.05rem; margin-bottom: 1rem;">💡 I'm currently learning <strong>HTML, CSS, JavaScript, GitHub, and Replit</strong>. I enjoy experimenting with AI-powered educational concepts and building projects that solve real problems.</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" style="margin: 3rem 0;">
+    <h2>Skills & Tools</h2>
+    <div class="glass-card" style="padding: 2rem;">
+      <div class="skills-grid">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">Basic JavaScript</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Replit</span>
+        <span class="skill-tag">Responsive Web Design</span>
+        <span class="skill-tag">Replit Agent</span>
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #b4c0f0;">⚡ Continuously improving — every day brings a new concept.</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="margin: 3rem 0;">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <!-- Project 1: JEE Study Aid -->
+      <div class="project-card">
+        <h3>📘 JEE Study Aid</h3>
+        <p>An educational web application created to help students organize study materials and improve learning efficiency. Includes Quiz arena, mock test,planner,analytics,subjects,Tutor AI.</p>
+        <img src="study aid.jpg" 
+             alt="JEE Study Aid project preview" 
+             class="project-img"
+             id="jeeProjectImg"
+             onerror="this.src='https://placehold.co/600x400/2a2550/a78bfa?text=Study+Aid+Interface'">
+        <div class="agent-credit">🤖 Built using Replit Agent · AI-assisted development</div>
+      </div>
+
+      <!-- Project 2: Personal Portfolio Website-->
+      <div class="project-card">
+        <h3>✨ Personal Portfolio Website</h3>
+        <p>A modern responsive portfolio website to showcase my journey as a student developer and JEE aspirant.</p>
+        <img src="portfolio.jpg" 
+             alt="Portfolio website preview" 
+             class="project-img"
+             id="portfolioProjectImg"
+             onerror="this.src='https://placehold.co/600x400/13102c/a78bfa?text=Personal+Portfolio+Screenshot'">
+      
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Timeline Section -->
+  <section id="journey" style="margin: 3rem 0;">
+    <h2>My Journey</h2>
+    <div class="glass-card" style="padding: 2rem;">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2025</div>
+          <div class="timeline-text">Started learning web development from scratch — first lines of HTML & CSS. Created GitHub account: CyberRoot-Dev.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">Early 2026</div>
+          <div class="timeline-text">Built my first educational web project (JEE Study Aid) with Replit Agent, explored responsive design and version control.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2026</div>
+          <div class="timeline-text">Preparing for JEE while improving development skills. Completed my personal portfolio website and started sharing code on GitHub under CyberRoot-Dev.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">Present</div>
+          <div class="timeline-text">Focusing on JavaScript fundamentals, building real mini-apps, and documenting my progress through open-source contributions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact -->
+<section id="contact" style="margin: 3rem 0;">
+  <h2>Let's connect</h2>
+  <div class="contact-flex glass-card" style="padding: 2rem;">
+    <div class="contact-info">
+      <p class="contact-text">📬 Feel free to reach out for collaboration, feedback or just a tech chat.</p>
+      <div class="social-links">
+        <!-- Email -->
+        <a href="mailto:h23663430@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/CyberRoot-Dev" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/hemakumari8" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  
+  
+  </div>
+</section>
+  <footer>
+    <p>© 2026 Hema Gupta — Student Developer & JEE Aspirant · <span class="gradient-text">CyberRoot-Dev</span></p>
+  
+  </footer>
+</div>
+
+<script>
+  // smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+</script>
+</body>
+</html>
